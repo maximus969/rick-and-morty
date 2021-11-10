@@ -2,6 +2,7 @@ import { useLazyQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import './App.css';
 import { apolloQuery } from './components/api';
+import { Party } from './components/Party/Party';
 import { Results } from './components/Results/Results';
 import { Search } from './components/Search/Search';
 
@@ -30,6 +31,7 @@ function App() {
           setRickImage={setRickImage}
           setMortyImage={setMortyImage}
       />
+      <Party RickImage={RickImage} MortyImage={MortyImage} />
     </div>
   );
 }

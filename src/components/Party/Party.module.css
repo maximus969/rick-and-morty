@@ -1,0 +1,32 @@
+.title {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 30px;
+}
+
+.partyBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarContainer {
+  position: relative;
+}
+
+.avatarBlock {
+  position: absolute;
+  font-size: 24px;
+  left: 80px;
+  top: 140px;
+  color: #ffff;
+  text-transform: uppercase;
+}
+
+.avatarImg {
+  width: 180px;
+  height: 220px;
+  background-color: #dadada;
+  margin: 0 30px 142px 30px;
+}
