@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useLazyQuery } from '@apollo/client';
+import React, { useState } from 'react';
 import './App.css';
+import { apolloQuery } from './components/api';
+import { Search } from './components/Search/Search';
 
 function App() {
+
+  const [searchQuery, setSearchQuery] = useState<string>('Rick')
+  const [RickImage, setRickImage] = useState<string>('')
+  const [MortyImage, setMortyImage] = useState<string>('')
+  const [getCharacters, { loading, data, error }] = useLazyQuery(apolloQuery, {
+    variables: {
+      searchQuery: searchQuery
+    }
+  })
+
+  
+
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => {getCharacters({variables: {searchQuery}})}}>send</button>
+      <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
     </div>
   );
 }
