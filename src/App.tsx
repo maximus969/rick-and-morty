@@ -1,24 +1,28 @@
 import { useLazyQuery } from '@apollo/client';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import { apolloQuery } from './components/api';
 import { Party } from './components/Party/Party';
 import { Results } from './components/Results/Results';
 import { Search } from './components/Search/Search';
+import * as _ from 'lodash';
 
 function App() {
 
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [RickImage, setRickImage] = useState<string>('')
   const [MortyImage, setMortyImage] = useState<string>('')
-  const [getCharacters, { loading, data, error }] = useLazyQuery(apolloQuery, {
-    variables: {
-      searchQuery: searchQuery
-    }
-  })
+  const [getCharacters, { loading, data, error }] = useLazyQuery(apolloQuery)
 
+  const throttledGetCharacters = useCallback(
+    _.throttle(getCharacters, 3000),
+  [])
   
-
+  useEffect(() => {
+    if (searchQuery.length > 2) {
+      throttledGetCharacters({ variables: {searchQuery}})
+    } 
+  }, [searchQuery, throttledGetCharacters])
  
   return (
     <div className="App">

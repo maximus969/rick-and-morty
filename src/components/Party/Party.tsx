@@ -14,12 +14,12 @@ export const Party: React.FC<RickOrMortyImageType> = ({ RickImage, MortyImage })
       <div className={s.partyBlock}>
         <div className={s.avatarContainer}>
           {RickImage ? null : <div className={s.avatarBlock}> Rick </div> }
-          <img className={s.avatarImg} src={RickImage} />
+          <img className={s.avatarImg} src={RickImage} alt='Rick_image'/>
         </div>
 
         <div className={s.avatarContainer}>
           {MortyImage ? null : <div className={s.avatarBlock}> Morty </div> }
-          <img className={s.avatarImg} src={MortyImage} />
+          <img className={s.avatarImg} src={MortyImage} alt='Morty_image'/>
         </div>
       </div>
       
