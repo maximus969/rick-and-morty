@@ -59,7 +59,7 @@ export const Results: React.FC<ResultType> = ({
               className={s.closeSircle}
               style={{
                 position: "absolute",
-                left: "175px",
+                left: "140px",
                 top: "10px",
                 fontSize: "25px",
                 opacity: "0.6"
